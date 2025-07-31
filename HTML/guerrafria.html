@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Nova Guerra Fria do Século 21</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .newspaper {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header-bars {
+            background: #000;
+            height: 8px;
+            margin-bottom: 4px;
+        }
+
+        .header-bars:nth-child(2) {
+            height: 4px;
+            margin-bottom: 20px;
+        }
+
+        .newspaper-header {
+            padding: 0 40px;
+            text-align: center;
+            border-bottom: 2px solid #000;
+            margin-bottom: 30px;
+        }
+
+        .date-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .main-headline {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .sub-headline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .content-wrapper {
+            padding: 0 40px 40px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #000;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .content-text {
+            font-size: 0.95rem;
+            text-align: justify;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .flag-image {
+            width: 120px;
+            height: 80px;
+            background: linear-gradient(to right, #de2910 0%, #de2910 100%);
+            position: relative;
+            margin: 0 auto 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .flag-image::before {
+            content: '★';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #ffde00;
+            font-size: 20px;
+        }
+
+        .flag-image::after {
+            content: '★ ★ ★ ★';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #ffde00;
+            font-size: 8px;
+            line-height: 1.2;
+            text-align: center;
+            width: 30px;
+        }
+
+        .landscape-image {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landscape-image::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .image-caption {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #333 0%, #000 100%);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #000;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .stats-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .stats-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .newspaper {
+                margin: 10px;
+                border-radius: 0;
+            }
+
+            .content-wrapper {
+                padding: 0 20px 20px;
+            }
+
+            .newspaper-header {
+                padding: 0 20px;
+            }
+
+            .main-headline {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-headline {
+                font-size: 1.5rem;
+                letter-spacing: 0.5px;
+            }
+
+            .date-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.back()">
+        Voltar
+    </button>
+
+    <div class="newspaper">
+        <div class="header-bars"></div>
+        <div class="header-bars"></div>
+        
+        <header class="newspaper-header">
+            <div class="date-info">
+                <span>Segunda-feira, 15</span>
+                <span>Economia Global</span>
+                <span>15 de janeiro de 2024</span>
+            </div>
+            <h1 class="main-headline">A Nova Guerra Fria do Século 21</h1>
+            <p class="sub-headline">Comercial War - China X Estados Unidos</p>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                <section class="content-section">
+                    <h2 class="section-title">Contexto:</h2>
+                    
+                    <div class="image-container">
+                        <div class="landscape-image"></div>
+                        <p class="image-caption">Tensões geopolíticas entre as superpotências</p>
+                    </div>
+
+                    <p class="content-text">
+                        A guerra comercial entre as duas maiores economias do mundo tem redefinido o cenário geopolítico global. Desde 2018, quando os Estados Unidos iniciaram uma série de tarifas contra produtos chineses, o mundo tem testemunhado uma escalada de tensões que vai muito além do comércio bilateral.
+                    </p>
+
+                    <p class="content-text">
+                        Esta disputa comercial representa uma mudança fundamental nas relações internacionais, marcando o início de uma nova era de competição estratégica entre as superpotências. Os impactos se estendem desde a tecnologia até a segurança nacional, afetando cadeias de suprimento globais.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p><strong>Principais setores afetados:</strong> Tecnologia, agricultura, manufatura, energia renovável e semicondutores.</p>
+                    </div>
+
+                    <h3 class="section-title">O desenvolvimento da guerra até agora:</h3>
+                    
+                    <p class="content-text">
+                        Desde o início, Washington alegou haver práticas comerciais desleais da China, incluindo transferência forçada de tecnologia, subsídios estatais excessivos e violação de propriedade intelectual. Pequim, por sua vez, acusou os Estados Unidos de protecionismo e de tentar conter o crescimento chinês através de medidas unilaterais.
+                    </p>
+                </section>
+
+                <section class="content-section">
+                    <h2 class="section-title">Impactos econômicos globais:</h2>
+                    
+                    <div class="image-container">
+                        <div class="flag-image"></div>
+                        <p class="image-caption">Bandeira da República Popular da China</p>
+                    </div>
+
+                    <p class="content-text">
+                        As consequências desta disputa comercial têm sido sentidas em todo o mundo. Países que dependem do comércio com ambas as nações enfrentam dilemas complexos sobre alinhamentos econômicos e políticos.
+                    </p>
+
+                    <div class="stats-box">
+                        <div class="stats-title">Dados econômicos relevantes:</div>
+                        <p>• PIB China: $17.7 trilhões (2021)</p>
+                        <p>• PIB EUA: $23.3 trilhões (2021)</p>
+                        <p>• Comércio bilateral: $690 bilhões (2021)</p>
+                    </div>
+
+                    <p class="content-text">
+                        A fragmentação das cadeias de suprimento globais tem forçado empresas multinacionais a repensar suas estratégias de produção e distribuição. Muitas companhias estão diversificando suas operações para reduzir a dependência de qualquer mercado único.
+                    </p>
+
+                    <p class="content-text">
+                        Os mercados emergentes, especialmente na Ásia e América Latina, encontram-se em posição delicada, tentando manter relações comerciais benéficas com ambas as superpotências sem comprometer sua soberania econômica.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p><strong>Perspectiva futura:</strong> Analistas preveem que esta rivalidade definirá a ordem econômica mundial nas próximas décadas, influenciando desde acordos comerciais até investimentos em infraestrutura global.</p>
+                    </div>
+
+                    <p class="content-text">
+                        O impacto na inovação tecnológica tem sido particularmente significativo, com ambos os países investindo massivamente em pesquisa e desenvolvimento para reduzir dependências mútuas em setores estratégicos como semicondutores, inteligência artificial e energia limpa.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

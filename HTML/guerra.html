@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metamorfose News - Análise Geopolítica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.7;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4a4a4a;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .back-button:hover {
+            background: #f5f5f5;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .back-button::before {
+            content: "←";
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .logo .accent {
+            color: #2563eb;
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .date-badge {
+            background: #f3f4f6;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: #ffffff;
+            padding: 80px 40px 60px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .category-tag {
+            background: #dc2626;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .reading-time {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 60px;
+        }
+
+        .article {
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #2563eb;
+            border-radius: 2px;
+        }
+
+        .article p {
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        .quote-block {
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 24px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-block .author {
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+
+        .quote-block .text {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .sidebar-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .map-visual {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-visual::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><rect width="300" height="200" fill="%23f0f9ff"/><circle cx="100" cy="80" r="6" fill="%23dc2626"/><circle cx="200" cy="120" r="6" fill="%2316a34a"/><path d="M100 80 Q150 60 200 120" stroke="%236b7280" stroke-width="2" fill="none" stroke-dasharray="4,4"/><text x="150" y="110" text-anchor="middle" font-family="Arial" font-size="12" fill="%234b5563">Oriente Médio</text></svg>');
+            background-size: cover;
+        }
+
+        .key-points {
+            list-style: none;
+        }
+
+        .key-points li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .key-points li::before {
+            content: '•';
+            color: #2563eb;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .key-points li:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-card {
+            background: #fef3f2;
+            border: 1px solid #fecaca;
+        }
+
+        .timeline-card .sidebar-title {
+            color: #dc2626;
+        }
+
+        .final-section {
+            background: #f8fafc;
+            padding: 60px 40px;
+            margin-top: 40px;
+        }
+
+        .final-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .final-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+
+        .final-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: #d1d5db;
+            margin: 40px auto;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 20px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .hero-section {
+                padding: 60px 20px 40px;
+            }
+
+            .header-content {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .header-meta {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .hero-section {
+                padding: 40px 16px 30px;
+            }
+
+            .main-content {
+                padding: 30px 16px;
+            }
+
+            .article {
+                font-size: 16px;
+            }
+        }
+
+        .loading-animation {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .article > * {
+            animation-delay: 0.1s;
+        }
+
+        .sidebar-card:nth-child(1) { animation-delay: 0.2s; }
+        .sidebar-card:nth-child(2) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <a href="#" class="back-button" onclick="history.back(); return false;">Voltar</a>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">Metamorfose<span class="accent">.News</span></div>
+                <div class="header-meta">
+                    <span>Análise Geopolítica</span>
+                    <div class="date-badge">21 de julho de 2025</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="category-tag">Geopolítica</div>
+                <h1 class="hero-title">Estamos Mais Perto da III Guerra Mundial</h1>
+                <p class="hero-subtitle">Análise profunda sobre o conflito Irã x Israel e suas implicações para uma possível Grande Guerra do século 21</p>
+                <div class="reading-time">8 min de leitura</div>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <article class="article loading-animation">
+                <h2 class="section-title">Origens do Conflito</h2>
+                
+                <p>O conflito entre Irã e Israel, embora tenha raízes históricas profundas, intensificou-se drasticamente a partir da Revolução Islâmica de 1979. Este momento marcou uma ruptura definitiva nas relações diplomáticas entre os dois países, quando o Irã, sob o regime do aiatiolá Khomeini, rompeu os laços estabelecidos com Israel durante o período do xá.</p>
+
+                <p>A partir desta transformação geopolítica, o Irã passou a considerar Israel como "inimigo do Islã" e "Satã menor" no cenário regional, adotando uma postura radical que cortou completamente as relações diplomáticas e definiu o apoio a grupos palestinos e xiitas como eixo central de sua estratégia de "resistência islâmica" contra o projeto sionista.</p>
+
+                <div class="quote-block">
+                    <div class="author">Benjamin Netanyahu, Primeiro-Ministro de Israel</div>
+                    <div class="text">"O recente ataque de Israel contra o Irã é altamente estratégico" dizem especialistas. Em 2023, com o início dos ataques massivos do Grupo Hamas, na Faixa de Gaza, o Estado de Israel tem cometido inúmeros crimes de guerra.</div>
+                </div>
+
+                <p>Desde então, o Irã desenvolveu uma estratégia de confronto indireto, utilizando grupos proxy como Hamas, Hezbollah e houthis para desafiar Israel sem entrar em guerra direta. Esta abordagem permitiu ao regime iraniano manter pressão constante sobre Israel enquanto evitava um confronto militar total que poderia resultar em sua própria destruição.</p>
+
+                <p>Por sua vez, Israel respondeu com uma estratégia de contenção que incluiu ataques pontuais, assassinatos seletivos de líderes iranianos e operações secretas em solo iraniano ou em territórios controlados pelo Irã. Esta dinâmica criou um estado de guerra fria regional que perdura há mais de quatro décadas.</p>
+
+                <h2 class="section-title">Escalada Nuclear</h2>
+
+                <p>A partir dos anos 2000, o programa nuclear iraniano transformou-se no epicentro das tensões regionais. Israel passou a enxergar o desenvolvimento nuclear iraniano como uma ameaça existencial à sua sobrevivência, levando a uma série de ações preventivas sem precedentes na região.</p>
+
+                <p>O ataque cibernético Stuxnet em 2010 representou um marco na guerra digital, demonstrando a capacidade israelense de sabotar infraestrutura crítica iraniana. Subsequentemente, uma série de assassinatos de cientistas nucleares iranianos e ataques a instalações nucleares evidenciaram a determinação de Tel Aviv em atrasar ou impedir o enriquecimento de urânio no Irã.</p>
+
+                <p>Os confrontos se agravaram dramaticamente entre 2024 e 2025, quando Israel bombardeou o consulado iraniano em Damasco e atacou instalações dentro do próprio território iraniano. Em resposta, o Irã iniciou ataques diretos com mísseis e drones contra alvos israelenses, marcando uma transição perigosa de guerra proxy para confrontos diretos entre as duas potências regionais.</p>
+            </article>
+
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Contexto Geográfico</h3>
+                    <div class="map-visual"></div>
+                    <ul class="key-points">
+                        <li>Distância: 2.310 km entre Teerã e Tel Aviv</li>
+                        <li>Mísseis iranianos podem atingir Israel em 12 minutos</li>
+                        <li>Bases militares americanas na região</li>
+                        <li>Estreito de Hormuz: 20% do petróleo mundial</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card timeline-card">
+                    <h3 class="sidebar-title">Cronologia Recente</h3>
+                    <ul class="key-points">
+                        <li><strong>Jun 2025:</strong> Operação Leão Ascendente</li>
+                        <li><strong>Mai 2025:</strong> Ataques a instalações nucleares</li>
+                        <li><strong>Abr 2025:</strong> Bombardeio do consulado em Damasco</li>
+                        <li><strong>2024:</strong> Início dos ataques diretos</li>
+                        <li><strong>2023:</strong> Escalada com Hamas</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Atores Regionais</h3>
+                    <ul class="key-points">
+                        <li>Estados Unidos: Apoio militar a Israel</li>
+                        <li>Rússia: Fornece armas ao Irã</li>
+                        <li>China: Parceria econômica com Irã</li>
+                        <li>Arábia Saudita: Rivalidade com Irã</li>
+                        <li>Turquia: Posição ambígua</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <section class="final-section">
+            <div class="final-content">
+                <h2 class="final-title">Vamos Viver a III Guerra Mundial?</h2>
+                <div class="divider"></div>
+                <p class="final-text">A análise para prever uma Guerra Mundial é feita a longo prazo - ninguém previu que a Segunda Guerra se tornaria mundial, nem mesmo a Primeira. A perduração dos conflitos determina como o fluxo de ataques e a magnitude dos confrontos vai emergir no cenário global.</p>
+                <br>
+                <p class="final-text">Com a recente entrada dos Estados Unidos como apoio militar de Israel e o envolvimento de outras potências globais, o cenário de uma provável guerra mundial torna-se mais pertinente, embora não seja certeiro. O atual contexto geopolítico sugere uma escalada preocupante, mas ainda existem espaços para diplomacia e resolução pacífica dos conflitos.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Adiciona animações suaves aos elementos
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.loading-animation');
+            elements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Smooth scroll para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

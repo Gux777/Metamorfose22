@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flamengo x Bayern: Eliminação com Honra na Copa do Mundo de Clubes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      overflow: hidden;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #d00000 0%, #ff3030 100%);
+      padding: 40px 30px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transform: rotate(45deg);
+    }
+
+    .noticia-titulo {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .noticia-subtitulo {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 300;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .noticia-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      position: relative;
+      z-index: 2;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .content {
+      padding: 40px;
+      color: #333;
+    }
+
+    .noticia-img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .noticia-img:hover {
+      transform: scale(1.02);
+    }
+
+    .noticia-texto {
+      font-size: 1.15rem;
+      color: #444;
+      text-align: justify;
+    }
+
+    .noticia-texto p {
+      margin-bottom: 20px;
+      text-indent: 30px;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #d00000 0%, #ff3030 100%);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .stats-box {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #d00000;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .stats-title {
+      font-weight: 700;
+      color: #d00000;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #d00000 0%, #ff3030 100%);
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(208,0,0,0.3);
+    }
+
+    .btn-voltar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(208,0,0,0.4);
+    }
+
+    .quote {
+      border-left: 4px solid #d00000;
+      padding: 20px;
+      margin: 25px 0;
+      background: rgba(208,0,0,0.05);
+      border-radius: 0 10px 10px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+      }
+      
+      .noticia-titulo {
+        font-size: 2.2rem;
+      }
+      
+      .header {
+        padding: 30px 20px 20px;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+      
+      .noticia-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="noticia-titulo">Flamengo x Bayern</h1>
+      <p class="noticia-subtitulo">Eliminação com honra na Copa do Mundo de Clubes</p>
+      <div class="noticia-meta">
+        <div class="meta-item">
+          <span>📝</span>
+          <span>Por Gustavo</span>
+        </div>
+        <div class="meta-item">
+          <span>📅</span>
+          <span>8 de Julho de 2025</span>
+        </div>
+        <div class="meta-item">
+          <span>📍</span>
+          <span>Miami, EUA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <img src="https://fla-image.mundobola.com/_next/image/?url=https%3A%2F%2Ffla-media.mundobola.com%2Fmedia%2F2025%2F06%2Fcopa-do-mundo-de-clubes-flamengo-x-bayern-jorginho.jpg&w=1200&q=75" alt="Flamengo em campo contra o Bayern de Munique" class="noticia-img"/>
+
+      <div class="noticia-texto">
+        <p>
+          O Flamengo foi eliminado da Copa do Mundo de Clubes pelo <span class="highlight">Bayern de Munique</span>, mas deixou o gramado de Miami com a cabeça erguida após uma partida de alto nível. O atacante Harry Kane foi o grande nome da partida, marcando dois gols decisivos, incluindo um de longa distância que demonstrou toda sua qualidade técnica.
+        </p>
+
+        <div class="stats-box">
+          <div class="stats-title">Estatísticas da Partida</div>
+          <p><strong>Posse de bola:</strong> Flamengo 51% x Bayern 49%</p>
+          <p><strong>Finalizações:</strong> Flamengo teve mais tentativas, com várias no alvo</p>
+          <p><strong>Público:</strong> Cerca de 60 mil torcedores presentes em Miami</p>
+        </div>
+
+        <p>
+          Apesar de ter menos posse de bola, o Bayern de Munique soube aproveitar os momentos-chave da partida com precisão cirúrgica nas finalizações. A eficiência alemã fez a diferença em um jogo equilibrado, onde ambas as equipes demonstraram qualidade técnica e intensidade.
+        </p>
+
+        <p>
+          O Flamengo mostrou coragem e competitividade do início ao fim, criando diversas oportunidades de gol e mantendo a forte presença de sua torcida, que compareceu em massa ao estádio de Miami. O apoio rubro-negro foi um dos pontos altos da partida, criando um ambiente verdadeiramente brasileiro em solo americano.
+        </p>
+
+        <div class="quote">
+          "O calor da torcida e a intensidade do jogo foram impressionantes. Enfrentamos uma equipe de muita qualidade." - Vincent Kompany, técnico do Bayern de Munique
+        </div>
+
+        <p>
+          O comandante rubro-negro <span class="highlight">Filipe Luís</span> elogiou a postura de seus jogadores e reconheceu a qualidade do adversário. Mesmo com a eliminação, o treinador ressaltou a postura valente de sua equipe durante toda a competição.
+        </p>
+
+        <p>
+          Com esta vitória, o Bayern de Munique avança para as quartas de final da Copa do Mundo de Clubes, onde enfrentará o Paris Saint-Germain em mais um confronto de gigantes do futebol mundial. O Flamengo, por sua vez, encerra sua participação no torneio deixando uma imagem de força, disciplina e paixão, características que sempre marcaram o clube carioca em competições internacionais.
+        </p>
+      </div>
+
+      <a href="index.html" class="btn-voltar">
+        <span>←</span>
+        <span>Voltar para o início</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
