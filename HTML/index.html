@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metamorfose - Revista de Notícias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #1a1a1a;
+      --accent-color: #ff6b35;
+      --text-light: #666;
+      --text-dark: #2c2c2c;
+      --bg-light: #fafafa;
+      --border-color: #e5e5e5;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #2c2c2c 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 0.4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    header .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+      background: rgba(255,107,53,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Section Headers */
+    section {
+      margin-bottom: 5rem;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), #ff8c5a);
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .card-content p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .card-content a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-color), #ff8c5a);
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+    }
+
+    .card-content a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+    }
+
+    /* Special styling for Flamengo text */
+    .flamengo-highlight {
+      color: #dc143c;
+      font-weight: 600;
+    }
+
+    /* Info Sections */
+    .info-section {
+      background: var(--bg-light);
+      padding: 3rem;
+      border-radius: 20px;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .info-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Form */
+    .contact-form { 
+      max-width: 600px;
+      margin: 2rem auto 0;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, var(--primary-color), #333);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(26,26,26,0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+      background: linear-gradient(135deg, var(--accent-color), #ff8c5a);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: 20px;
+    }
+
+    .newsletter h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 400px;
+      margin: 0 auto;
+      gap: 1rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-container {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>METAMORFOSE</h1>
+    <p class="subtitle">Sua revista digital de tendências e estilo de vida</p>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#moda">Moda</a>
+      <a href="#esporte">Esporte</a>
+      <a href="#culinaria">Culinária</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#Politica">Politica</a>
+      <a href="#quem-somos">Quem Somos</a>
+      <a href="#fale-conosco">Fale Conosco</a>
+      
+    </div>
+  </nav>
+
+  <main>
+    <!-- Moda -->
+    <section id="moda">
+      <h2>Engrenagem de Modas</h2>
+      <div class="cards-container">
+        <article class="card">
+          <img src="https://assets.rediredi.com/stores/images/7401c945-fddd-47c9-9fd6-4acf0120afe0_7926d182-d476-4538-8753-f0b7ef1f3ded.jpg?s=large&f=webp" alt="Moda em BH" />
+          <div class="card-content">
+            <h3>Moda Alternativa em BH</h3>
+            <p>Descubra o Túnel do Rock, uma loja que é referência de moda alternativa em Belo Horizonte, com anos de tradição e um estilo único que marca presença na cena cultural da cidade.</p>
+            <a href="Moda.html" onclick="openArticle('moda-bh')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="../imagens/wherearetheavocados_42003051_259103254798828_737869429671301063_n.jpg" alt="Personalidade e Estilo" />
+          <div class="card-content">
+            <h3> PERSONALIDADE E ESTILO</h3>
+            <p>Em tempos de constante mudança na moda, encontrar seu estilo pessoal pode ser desafiador. Descubra como desenvolver um guarda-roupa que reflita sua personalidade única.</p>
+            <a href="Estilo.html" onclick="openArticle('personalidade-estilo')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://img.freepik.com/fotos-gratis/conceito-de-estilo-de-vida-adolescente_23-2148095613.jpg?semt=ais_hybrid&w=740" alt="Estilo e Clima" />
+          <div class="card-content">
+            <h3>Moda e Estações</h3>
+            <p>No Brasil, as estações não são tão definidas, mas isso não nos impede de criar looks temáticos incríveis. Aprenda a adaptar seu estilo para cada época do ano.</p>
+            <a href="#" onclick="openArticle('moda-estacoes')">Leia mais</a>
+          </div> 
+        </article>
+      </div>
+    </section>
+
+    <!-- Esporte -->
+    <section id="esporte">
+      <h2>Esporte</h2>
+      <div class="cards-container">
+        <article class="card">
+          <img src="https://fla-image.mundobola.com/_next/image/?url=https%3A%2F%2Ffla-media.mundobola.com%2Fmedia%2F2025%2F06%2Fcopa-do-mundo-de-clubes-flamengo-x-bayern-jorginho.jpg&w=1200&q=75" alt="Flamengo vs Bayern" />
+          <div class="card-content">
+            <h3>Flamengo vs Bayern de Munique</h3>
+            <p>No último domingo (29/06/25), o <span class="flamengo-highlight">Flamengo</span> enfrentou o poderoso Bayern de Munique em um jogo que ficará marcado na história do clube. Análise completa da partida.</p>
+            <a href="flamengo.html" onclick="openArticle('flamengo-bayern')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://correiopaulista.com/wp-content/uploads/2025/07/bortoleto-abandona-correio-paulista.png" alt="Gabriel Bortoleto" />
+          <div class="card-content">
+            <h3>A Nova Esperança da F1</h3>
+            <p>Gabriel Bortoleto surge como a grande promessa do automobilismo brasileiro na Fórmula 1. Conheça a trajetória do jovem piloto que pode ser o sucessor de Ayrton Senna.</p>
+            <a href="f1.html" onclick="openArticle('bortoleto-f1')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://sportbuzz.com.br/wp-content/uploads/2024/07/httpssportbuzz.com_.brmediauploads202406sem-titulo-1_2moyqeat.png" alt="Vôlei Feminino" />
+          <div class="card-content">
+            <h3>Brasil na VNL 2025</h3>
+            <p>A seleção brasileira feminina de vôlei retorna à Liga das Nações com força total. A terceira semana da fase classificatória promete grandes emoções no Japão.</p>
+            <a href="vnl.html" onclick="openArticle('brasil-vnl')">Leia mais</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Culinária -->
+    <section id="culinaria">
+      <h2>Culinária</h2>
+      <div class="cards-container">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Receitas rápidas" />
+          <div class="card-content">
+            <h3>A gastronomia mineira</h3>
+            <p>A gastronomia mineira carrega séculos de história. De origem simples e cheia de afeto, ela nasce da mistura entre culturas indígenas, africanas e europeias. </p>
+            <a href="culinaria.html" onclick="openArticle('receitas-rapidas')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1512058564366-c9e3a9c8a8d9?auto=format&fit=crop&w=400&q=80" alt="Culinária italiana" />
+          <div class="card-content">
+            <h3>Segredos da Itália</h3>
+            <p>Mergulhe nos autênticos sabores da culinária italiana. Ingredientes especiais e técnicas tradicionais que fazem toda a diferença no resultado final.</p>
+            <a href="#" onclick="openArticle('culinaria-italiana')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=400&q=80" alt="Doces especiais" />
+          <div class="card-content">
+            <h3>Doces de Ocasião</h3>
+            <p>Receitas de sobremesas espetaculares que vão impressionar seus convidados e tornar qualquer celebração ainda mais especial e memorável.</p>
+            <a href="#" onclick="openArticle('doces-especiais')">Leia mais</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+     <!-- Politica -->
+    <section id="Politica">
+      <h2>Politica/ Mundo</h2>
+      <div class="cards-container">
+        <article class="card">
+          <img src="img/poder-guerra-ir-israel.png" alt="Israel vs Ira " />
+          <div class="card-content">
+            <h3>Irã x Israel: A provável Grande Guerra do século 21</h3>
+            <p>Analistas preveem que esta rivalidade definirá a ordem econômica mundial nas próximas décadas, influenciando desde acordos comerciais até investimentos em infraestrutura global.. </p>
+            <a href="guerra.html" onclick="openArticle('israel e ira')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="img/taqe.jpg" alt="vagas de emprego" />
+          <div class="card-content">
+            <h3>VAGAS DE TRABALHO E COMO MELHORAR SEU CURRÍCULO</h3>
+            <p>Para bombar no Linkedin, foque em construir um perfil completo e atraente, seja ativo na plataforma com conteúdo relevante e interaja com outros usuários.</p>
+            <a href="vagasemprego.html" onclick="openArticle('vagas de emprego')">Leia mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="img/EUA-x-China.png" alt="guerra fria " />
+          <div class="card-content">
+            <h3>"A Nova Guerra Fria Do Seculo 21"</h3>
+            <p>Receitas de sobremesas espetaculares que vão impressionar seus convidados e tornar qualquer celebração ainda mais especial e memorável.</p>
+            <a href="guerrafria.html" onclick="openArticle('guerra - fria')">Leia mais</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="newsletter">
+      <h3>Não Perca Nenhuma Novidade</h3>
+      <p>Receba as últimas tendências de moda, esporte e culinária diretamente em seu email</p>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="Seu melhor email" required />
+        <button type="submit">Assinar</button>
+      </form>
+    </section>
+
+    <!-- Quem Somos -->
+    <section id="quem-somos" class="info-section">
+      <h2>Quem Somos</h2>
+      <p> 
+        A Metamorfose nasceu da paixão por contar histórias que transformam. Somos uma revista digital 
+        que conecta você às principais tendências de moda, aos momentos mais emocionantes do esporte 
+        e aos sabores que despertam os sentidos na culinária. Nossa equipe é formada por jornalistas 
+        especializados, fotógrafos talentosos e especialistas apaixonados, todos unidos pelo compromisso 
+        de trazer conteúdo de qualidade, diversidade e inovação para nossos leitores.
+      </p>
+    </section>
+
+    <!-- Fale Conosco -->
+    <section id="fale-conosco" class="info-section">
+      <h2>Fale Conosco</h2>
+      <p>Tem alguma sugestão, dúvida ou quer fazer parte da nossa equipe? Adoraríamos ouvir você!</p>
+
+      <form class="contact-form" onsubmit="sendMessage(event)">
+        <div class="form-group">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome" placeholder="Como devemos te chamar?" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Sua Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Compartilhe seus pensamentos, sugestões ou dúvidas conosco..." required></textarea>
+        </div>
+
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Metamorfose. Todos os direitos reservados. | Desenvolvido com 💝 para nossos leitores</p>
+  </footer>
+
+  <script src="../ascents/scripts/app.js"> </script>
+ 
+
+</body>
+</html>
