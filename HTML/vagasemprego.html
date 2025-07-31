@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias - Vagas de Emprego</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header::before,
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .header::before {
+            left: 0;
+        }
+
+        .header::after {
+            right: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            margin: 20px 0;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .article-section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .article-section p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .platforms {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .taqe-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .taqe-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+        }
+
+        .taqe-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .dots {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+        }
+
+        .taqe-text {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .linkedin-card {
+            text-align: center;
+        }
+
+        .linkedin-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0077b5;
+            margin-bottom: 15px;
+        }
+
+        .people-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .person-icon {
+            width: 40px;
+            height: 40px;
+            background: #666;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .person-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .person-icon::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 12px;
+            background: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .bradesco-card {
+            text-align: center;
+        }
+
+        .bradesco-logo {
+            font-size: 1.5rem;
+            color: #c41e3a;
+            margin-bottom: 10px;
+        }
+
+        .bradesco-text {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #666;
+            text-transform: lowercase;
+        }
+
+        .platform-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        .taqe-card .platform-description {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid #f0f0f0;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #764ba2;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .header::before,
+            .header::after {
+                width: 50px;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .article-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .platforms {
+                gap: 20px;
+            }
+
+            .platform-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .header::before,
+            .header::after {
+                display: none;
+            }
+
+            .article-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .taqe-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.back()">
+        Voltar
+    </button>
+    <div class="container">
+        <header class="header">
+            <h1>Notícias</h1>
+        </header>
+
+        <main class="main-content">
+            <section class="article-section">
+                <h2>Vagas de Trabalho e Como Melhorar Seu Currículo</h2>
+                
+                <div class="platform-card taqe-card">
+                    <div class="taqe-logo">
+                        <div class="dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="taqe-text">taqe</div>
+                    </div>
+                    <p class="platform-description">
+                        O taqe é uma plataforma de vagas de emprego que facilita a vida de quem precisa da primeira oportunidade, um sistema em que você cresce seu perfil como se fosse um jogo, vagas boas e diferentes, quanto mais completo seu perfil maior a chance de conseguir uma vaga cheia de benefícios.
+                    </p>
+                </div>
+            </section>
+
+            <section class="platforms">
+                <p>Todo jovem que tentou entrar no mercado de trabalho sabe o quão difícil é ter um ponto de partida, você manda e manda currículo e nunca tem respostas, empresas que te chamam para entrevista e tentam vender cursos, na vaga te pedem pacote office e experiência e você quer gritar? Pois pode ficar tranquilo, nessa seção vamos dar dicas para melhorar seu currículo, onde procurar e até sobre como mexer no linkedin.</p>
+
+                <div class="platform-card linkedin-card">
+                    <div class="linkedin-logo">LinkedIn</div>
+                    <div class="people-icons">
+                        <div class="person-icon"></div>
+                        <div class="person-icon"></div>
+                        <div class="person-icon"></div>
+                        <div class="person-icon"></div>
+                    </div>
+                    <p class="platform-description">
+                        Para bombar no LinkedIn, foque em construir um perfil completo e atrativo, seja ativo na plataforma com conteúdo relevante e interaja com outros usuários. Utilize palavras-chave estratégicas, destaque suas habilidades e experiências, e não hesite em pedir recomendações.
+                    </p>
+                </div>
+
+                <div class="platform-card bradesco-card">
+                    <div class="bradesco-logo">🏛️</div>
+                    <div class="bradesco-text">fundação<br>bradesco</div>
+                    <p class="platform-description">
+                        Para você que está surtando por não ter nada no seu currículo, segura a minha mão e vem comigo, a Fundação Bradesco é uma plataforma recheada de cursos online que são rápidos de se fazer e dão certificados, é o ponto de partida perfeita para quem não tem nada no currículo.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <a href="https://www.ev.org.br/" target="_blank" rel="noopener noreferrer">
+                https://www.ev.org.br/
+            </a>
+        </footer>
+    </div>
+</body>
+</html>
