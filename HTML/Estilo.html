@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalidade e Estilo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 10;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            transition: background-color 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #f5f5f5;
+        }
+
+        .back-arrow {
+            width: 16px;
+            height: 16px;
+        }
+
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .text-paragraph {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .image-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .image-column:nth-child(2) {
+            margin-top: 2rem;
+        }
+
+        .style-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .references-section {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 2rem;
+        }
+
+        .references-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .reference-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .reference-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: linear-gradient(45deg, #f8f8f8, #e8e8e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .tips-section {
+            margin-top: 3rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .tips-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            color: #555;
+        }
+
+        .tips-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .content-grid,
+            .references-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .images-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-column:nth-child(2) {
+                margin-top: 0;
+            }
+
+            .reference-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Back Button -->
+    <div class="header">
+        <div class="container">
+            <button class="back-button" onclick="window.history.back()">
+                <svg class="back-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Voltar
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Title Section -->
+            <div class="title-section">
+                <h1 class="main-title">
+                    PERSONALIDADE<br>E ESTILO
+                </h1>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Left Column - Text Content -->
+                <div class="text-content">
+                    <div>
+                        <p class="text-paragraph">
+                            Nos tempos de hoje em que temos acesso das mais variadas formas de moda através da mídia tradicional em
+                            suas várias faces ou das mídias sociais, é difícil encontrar o seu estilo próprio.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="section-title">Personalidade x Estilo</h2>
+                        <p class="text-paragraph">
+                            Para poder encontrar o seu estilo pessoal, é preciso primeiro entender a sua personalidade. Cada
+                            segmento gera a sua influência externa, mas cada uma tem formas distintas de se expressar através da
+                            moda. A personalidade é o conjunto de características, atitudes e comportamentos que definem quem você é
+                            como pessoa. Já o estilo é a forma como você se expressa através das suas escolhas de roupas, acessórios
+                            e visual geral.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column - Fashion Images -->
+                <div class="images-grid">
+                    <div class="image-column">
+                        <div class="style-image">Estilo Colorido</div>
+                        <div class="style-image">Estilo Elegante</div>
+                    </div>
+                    <div class="image-column">
+                        <div class="style-image">Estilo Casual</div>
+                        <div class="style-image">Estilo Boêmio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- References Section -->
+            <div class="references-section">
+                <h2 class="references-title">
+                    Onde buscar<br>
+                    referências?
+                </h2>
+
+                <div class="references-grid">
+                    <div>
+                        <p class="text-paragraph" style="margin-bottom: 1.5rem;">
+                            Existem diversas fontes para se inspirar e criar o que mais combina com você e com o seu estilo de vida.
+                            Você pode buscar referências em revistas de moda, blogs, redes sociais, street style, cinema, catálogos,
+                            ou até mesmo observar o que outras pessoas ao seu redor estão usando.
+                        </p>
+
+                        <p class="text-paragraph">
+                            O importante é filtrar essas referências para tudo o que faz sentido para você. Lembre-se sempre que nem
+                            tudo que está na moda precisa fazer parte do seu guarda-roupa. Escolha apenas o que realmente combina
+                            com a sua personalidade e estilo de vida.
+                        </p>
+                    </div>
+
+                    <!-- Reference Images Grid -->
+                    <div class="reference-images">
+                        <div class="reference-image">Revistas</div>
+                        <div class="reference-image">Street Style</div>
+                        <div class="reference-image">Blogs</div>
+                        <div class="reference-image">Passarelas</div>
+                        <div class="reference-image">Cinema</div>
+                        <div class="reference-image">Influencers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="tips-section">
+                <h3 class="tips-title">Dicas para encontrar seu estilo:</h3>
+                <ul class="tips-list">
+                    <li>Analise seu estilo de vida e necessidades diárias</li>
+                    <li>Identifique as cores que mais te favorecem</li>
+                    <li>Observe quais peças você mais usa no seu guarda-roupa</li>
+                    <li>Experimente diferentes combinações e estilos</li>
+                    <li>Não tenha medo de ousar, mas sempre respeitando sua personalidade</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

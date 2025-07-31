@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metamorfose | Gabriel Bortoleto - A Nova Esperança da F1 Brasileira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --dark: #1A1A1A;
+            --light: #F8F8F8;
+            --gray: #6D6D6D;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://example.com/f1-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content {
+            padding: 40px;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+        
+        /* Content */
+        .article-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .main-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background-color: #FFF5F5;
+            border-left: 4px solid var(--primary);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .driver-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .driver-image {
+            height: 200px;
+            background-color: #eee;
+            background-image: url('https://correiopaulista.com/wp-content/uploads/2025/07/bortoleto-abandona-correio-paulista.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .driver-info {
+            padding: 20px;
+        }
+        
+        .driver-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .driver-stats {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .driver-stats li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .driver-stats span:first-child {
+            font-weight: 600;
+        }
+        
+        /* Continue Reading */
+        .continue-reading {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .continue-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+        
+        .continue-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .sources {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .sources a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .sources a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="../ascents/index.html" class="logo">metamorfose</a>
+            <div class="date">01 de julho de 2025</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>O NOVO AYRTON SENNA?</h1>
+            <h2>Gabriel Bortoleto - a promessa da fórmula 1 brasileira</h2>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="article-content">
+            <div class="main-content">
+                <h3>Quem é Gabriel Bortoleto?</h3>
+                <p>Gabriel Lourenzo Bortoleto Oliveira, nascido em 14 de outubro de 2004 em Osasco (SP), é um piloto brasileiro de Fórmula 1 pela equipe Sauber. Iniciou no kart aos seis anos e, após destaque na Europa, conquistou os títulos da Fórmula 3 em 2023 e da Fórmula 2 em 2024, ambos como estreante. Em 2025, tornou-se o primeiro brasileiro titular na F1 desde Felipe Massa, correndo ao lado de Nico Hülkenberg.</p>
+                
+                <div class="highlight-box">
+                    <h2>O Brasil está de volta!</h2>
+                    <p>Gabriel Bortoleto finalizou o GP da Áustria em 8º lugar — tornando-se o primeiro brasileiro a pontuar na Fórmula 1 desde Felipe Massa no GP de Abu Dhabi de 2017.</p>
+                </div>
+                
+                <p>Após largar na mesma posição, o piloto da Sauber manteve-se firme no top-8 até o fim, garantindo seus primeiros 4 pontos na categoria. Já na parte final da corrida, Bortoleto travou um duelo intenso com seu mentor na F1, Fernando Alonso, que acabou vencido pelo veterano.</p>
+                
+                <p>O embate foi marcado por trocas de posição, uso estratégico de bandeiras azuis — pois tinham de liberar a passagem para Lando Norris — e manobras táticas, especialmente envolvendo o uso do DRS por parte de Alonso. Foi considerado por Bortoleto "provavelmente a corrida mais desafiadora da minha carreira até agora".</p>
+                
+                <div class="continue-reading">
+                    <a href="index.html" class="continue-btn">VOLTAR</a>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="driver-card">
+                    <div class="driver-image"></div>
+                    <div class="driver-info">
+                        <h4>Gabriel Bortoleto</h4>
+                        <p>Piloto de Fórmula 1 pela Sauber</p>
+                        <ul class="driver-stats">
+                            <li><span>Nacionalidade</span> <span>Brasileira</span></li>
+                            <li><span>Nascimento</span> <span>14/10/2004</span></li>
+                            <li><span>Equipe</span> <span>Sauber</span></li>
+                            <li><span>Títulos</span> <span>F3 2023, F2 2024</span></li>
+                            <li><span>Pontos na F1</span> <span>4</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Metamorfose. Todos os direitos reservados.</p>
+            <div class="sources">
+                <a href="#">en.wikipedia.org</a>
+                <a href="#">reuters.com</a>
+                <a href="#">motorsinside.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
