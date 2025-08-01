@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tendências de Moda Outono/Inverno 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background-color: #faf8f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .main-title::before,
+        .main-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #1a1a1a;
+        }
+
+        .main-title::before {
+            top: -20px;
+        }
+
+        .main-title::after {
+            bottom: -20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #d4af37, #f4e7d1);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="60" r="1.5" fill="rgba(255,255,255,0.2)"/><circle cx="50" cy="80" r="2.5" fill="rgba(255,255,255,0.25)"/></svg>') repeat;
+            animation: shimmer 10s infinite ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .intro-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .tradition-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .fashion-highlight {
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .fashion-highlight h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .trends-section {
+            background: #f8f6f3;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .trends-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+        }
+
+        .trends-details h4 {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .trends-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .trends-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1rem;
+        }
+
+        .trends-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        .style-tips {
+            counter-reset: tip-counter;
+        }
+
+        .style-tip {
+            counter-increment: tip-counter;
+            margin-bottom: 20px;
+            padding: 18px;
+            background: white;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 65px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .style-tip::before {
+            content: counter(tip-counter);
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            background: #d4af37;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .lookbook-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #d4af37, #f4e7d1);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lookbook-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M50,50 Q100,10 150,50 Q190,100 150,150 Q100,190 50,150 Q10,100 50,50" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .fashion-quote {
+            background: #fff;
+            padding: 30px;
+            border-left: 6px solid #d4af37;
+            margin: 40px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .fashion-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #d4af37;
+            line-height: 0;
+            margin-right: 10px;
+        }
+
+        .fashion-quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: #d4af37;
+            line-height: 0;
+            margin-left: 10px;
+        }
+
+        .designers-section {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .designers-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .designers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .designer-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .designer-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .designer-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+
+        .designer-specialty {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .content-grid,
+            .trends-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            .trends-section,
+            .designers-section {
+                padding: 25px 20px;
+            }
+
+            .hero-image,
+            .lookbook-image {
+                height: 250px;
+                font-size: 3rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: #d4af37;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .back-button::before {
+            content: '←';
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">Voltar</button>
+    
+    <div class="container fade-in">
+        <header class="header">
+            <div class="subtitle">TENDÊNCIAS</div>
+            <h1 class="main-title">Outono/Inverno 2025</h1>
+        </header>
+
+        <section class="content-grid">
+            <div>
+                <div class="hero-image">👗</div>
+            </div>
+            <div class="intro-text">
+                <h2 class="tradition-title">A Nova Era da Elegância:</h2>
+                <p class="description">
+                    As passarelas internacionais revelaram uma temporada que combina nostalgia e inovação. O Outono/Inverno 2025 traz de volta a sofisticação clássica com um toque contemporâneo, onde texturas ricas, silhuetas marcantes e paletas de cores refinadas dominam o cenário fashion.
+                </p>
+                
+                <div class="fashion-highlight">
+                    <h3>Destaques da Temporada:</h3>
+                    <p>Maximalismo controlado, sustentabilidade luxuosa e a volta dos grandes clássicos reinventados para a mulher moderna que busca expressão e conforto sem abrir mão do estilo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trends-section">
+            <h2 class="section-title">🌟 Principais Tendências</h2>
+            <div class="trends-content">
+                <div class="trends-details">
+                    <h4>Cores em Destaque</h4>
+                    <ul class="trends-list">
+                        <li>Borgonha e tons de vinho profundo</li>
+                        <li>Verde esmeralda e tons terrosos</li>
+                        <li>Caramelo e dourado vintage</li>
+                        <li>Azul marinho e cinza carvão</li>
+                        <li>Rosa empoerado e nude rosé</li>
+                    </ul>
+
+                    <h4>Texturas e Tecidos</h4>
+                    <div class="style-tips">
+                        <div class="style-tip">
+                            <strong>Veludo Luxuoso:</strong> O veludo retorna com força total em blazers, vestidos e acessórios, trazendo sofisticação e conforto.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Tricô Estruturado:</strong> Malhas densas e tricôs com texturas marcantes criam silhuetas arquitetônicas modernas.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Couro Sustentável:</strong> Alternativas ecológicas ao couro tradicional ganham espaço em bolsas, sapatos e jaquetas.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Tweed Moderno:</strong> O clássico tweed é reinventado com fios metalizados e cores inesperadas.
+                        </div>
+                    </div>
+                </div>
+                <div class="lookbook-image">✨</div>
+            </div>
+        </section>
+
+        <div class="fashion-quote">
+            A moda é a armadura para sobreviver à realidade do dia a dia. Esta temporada, escolhemos peças que nos fortalecem e nos fazem sentir poderosas, sem sacrificar nossa individualidade.
+        </div>
+
+        <section class="designers-section">
+            <h2 class="section-title" style="color: white; margin-bottom: 40px;">Designers em Foco</h2>
+            <div class="designers-grid">
+                <div class="designer-card">
+                    <div class="designer-name">Maria Silva</div>
+                    <div class="designer-specialty">Minimalismo Brasileiro</div>
+                    <p>Pioneira em moda sustentável, combina técnicas artesanais com design contemporâneo.</p>
+                </div>
+                <div class="designer-card">
+                    <div class="designer-name">Carlos Mendoza</div>
+                    <div class="designer-specialty">Alfaiataria de Luxo</div>
+                    <p>Revoluciona a alfaiataria clássica com cortes inovadores e materiais de alta tecnologia.</p>
+                </div>
+                <div class="designer-card">
+                    <div class="designer-name">Ana Beatriz</div>
+                    <div class="designer-specialty">Streetwear Couture</div>
+                    <p>Mescla a cultura urbana com técnicas de alta costura, criando peças únicas e democráticas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trends-section">
+            <h2 class="section-title">📖 Como Usar as Tendências</h2>
+            <div class="trends-content">
+                <div class="trends-details">
+                    <h4>Dicas de Stylist</h4>
+                    <div class="style-tips">
+                        <div class="style-tip">
+                            <strong>Invista em uma peça statement:</strong> Escolha um item marcante da temporada e construa o look ao redor dele com peças básicas de qualidade.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Misture texturas:</strong> Combine veludo com tricô, ou couro com seda para criar contrastes interessantes e sofisticados.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Aposte em camadas:</strong> O layering continua sendo fundamental. Sobreponha peças de diferentes comprimentos e texturas.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Acessórios em foco:</strong> Bolsas estruturadas, sapatos com detalhes metálicos e joias statement completam qualquer produção.
+                        </div>
+                        <div class="style-tip">
+                            <strong>Paleta harmoniosa:</strong> Trabalhe com no máximo três cores por look, priorizando tons que conversem entre si.
+                        </div>
+                    </div>
+                </div>
+                <div class="lookbook-image">🎨</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.trends-section, .fashion-quote, .designers-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

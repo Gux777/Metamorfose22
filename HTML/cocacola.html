@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca-Cola vai lançar bebida com açúcar de cana nos EUA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 60px 40px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .category {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: bubble 15s infinite ease-in-out;
+        }
+
+        @keyframes bubble {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .lead-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #dc2626;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 6px solid #f59e0b;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.1);
+        }
+
+        .highlight-box h3 {
+            color: #92400e;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .highlight-box p {
+            color: #78350f;
+            font-weight: 500;
+        }
+
+        .comparison-section {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .comparison-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .comparison-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .usa-item {
+            border-top: 4px solid #3b82f6;
+        }
+
+        .brasil-item {
+            border-top: 4px solid #10b981;
+        }
+
+        .comparison-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .impact-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .impact-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .impact-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .impact-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .share-section {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .share-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #475569;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .share-btn.facebook { background: #1877f2; }
+        .share-btn.twitter { background: #1da1f2; }
+        .share-btn.whatsapp { background: #25d366; }
+        .share-btn.linkedin { background: #0a66c2; }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .back-button::before {
+            content: '←';
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 40px 20px 30px;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-image {
+                height: 250px;
+                font-size: 3rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">Voltar</button>
+    
+    <div class="container fade-in">
+        <header class="header">
+            <div class="category">🥤 Indústria de Bebidas</div>
+            <h1 class="main-title">Coca-Cola vai lançar versão com açúcar de cana nos EUA</h1>
+            <p class="subtitle">Gigante americana confirma plano anunciado por Trump de substituir xarope de milho</p>
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>30 de julho, 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>3 min de leitura</span>
+                </div>
+                <div class="meta-item">
+                    <span>🏷️</span>
+                    <span>Negócios</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="hero-section">
+                <div class="hero-image">
+                   <img src="../img/Agro_CocaColajpg.jpg" alt="coca-cola" >
+                </div>
+                <div>
+                    <p class="lead-text">
+                        A Coca-Cola anunciou oficialmente que planeja lançar uma nova versão de seu refrigerante principal adoçada com açúcar de cana nos Estados Unidos, confirmando os planos apresentados pelo presidente Donald Trump.
+                    </p>
+                </div>
+            </section>
+
+            <article class="article-content">
+                <p>
+                    A gigante americana Coca-Cola anunciou nesta terça-feira (22/7) que planeja lançar uma nova versão de seu principal produto adoçada com açúcar de cana como parte de sua linha de produtos nos Estados Unidos, confirmando um plano apresentado pelo presidente Donald Trump na semana passada.
+                </p>
+
+                <p>
+                    A empresa já utiliza açúcar de cana para adoçar a Coca-Cola em diversos países do mundo, como Brasil, México, Reino Unido e Austrália, mas nos EUA utiliza há décadas xarope de milho, uma alternativa de menor custo que tem sido amplamente criticada por consumidores e especialistas em saúde.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>🌟 Por que a mudança é importante?</h3>
+                    <p>
+                        O açúcar de cana é considerado por muitos consumidores como uma opção mais natural e saborosa em comparação ao xarope de milho rico em frutose (HFCS), que tem sido associado a diversos problemas de saúde e alterações no sabor do refrigerante.
+                    </p>
+                </div>
+
+                <p>
+                    Esta decisão representa uma mudança significativa na estratégia da Coca-Cola no mercado americano, onde a empresa tem enfrentado pressão crescente de consumidores que preferem ingredientes mais naturais e têm demonstrado preferência pelas versões importadas do México, que já utilizam açúcar de cana.
+                </p>
+
+                <p>
+                    O anúncio vem em um momento em que a indústria de bebidas passa por uma transformação, com consumidores cada vez mais conscientes sobre os ingredientes que consomem e dispostos a pagar mais por produtos que consideram mais saudáveis ou naturais.
+                </p>
+            </article>
+
+            <section class="comparison-section">
+                <h2 class="comparison-title">🌍 Coca-Cola pelo Mundo</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-item usa-item">
+                        <div class="comparison-icon">🇺🇸</div>
+                        <h4>Estados Unidos (Atual)</h4>
+                        <p><strong>Adoçante:</strong> Xarope de milho rico em frutose</p>
+                        <p><strong>Motivo:</strong> Menor custo de produção</p>
+                        <p><strong>Recepção:</strong> Crescente resistência dos consumidores</p>
+                    </div>
+                    <div class="comparison-item brasil-item">
+                        <div class="comparison-icon">🇧🇷</div>
+                        <h4>Brasil e outros países</h4>
+                        <p><strong>Adoçante:</strong> Açúcar de cana</p>
+                        <p><strong>Motivo:</strong> Disponibilidade local e preferência</p>
+                        <p><strong>Recepção:</strong> Amplamente aceito pelos consumidores</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="impact-section">
+                <h2 class="impact-title">📈 Impactos Esperados</h2>
+                <ul class="impact-list">
+                    <li>Aumento da satisfação do consumidor americano</li>
+                    <li>Possível elevação nos custos de produção</li>
+                    <li>Maior competitividade com versões importadas</li>
+                    <li>Fortalecimento da imagem de marca "mais natural"</li>
+                    <li>Potencial aumento nas vendas no mercado premium</li>
+                    <li>Pressão sobre outros fabricantes para mudanças similares</li>
+                </ul>
+            </section>
+
+            <div class="quote-section">
+                <p class="quote-text">
+                    "Esta mudança representa nosso compromisso contínuo em oferecer aos consumidores americanos o que eles realmente desejam: uma Coca-Cola com o sabor autêntico que conhecem e amam em todo o mundo."
+                </p>
+                <p class="quote-author">- Porta-voz da Coca-Cola Company</p>
+            </div>
+
+            <section class="share-section">
+                <h3 class="share-title">📢 Compartilhe esta notícia</h3>
+                <div class="share-buttons">
+                    <a href="#" class="share-btn facebook" onclick="shareNews('facebook')">
+                        📘 Facebook
+                    </a>
+                    <a href="#" class="share-btn twitter" onclick="shareNews('twitter')">
+                        🐦 Twitter
+                    </a>
+                    <a href="#" class="share-btn whatsapp" onclick="shareNews('whatsapp')">
+                        💬 WhatsApp
+                    </a>
+                    <a href="#" class="share-btn linkedin" onclick="shareNews('linkedin')">
+                        💼 LinkedIn
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+
+        function shareNews(platform) {
+            const title = "Coca-Cola vai lançar versão com açúcar de cana nos EUA";
+            const url = window.location.href;
+            const text = "A Coca-Cola anunciou que vai lançar uma versão com açúcar de cana nos EUA, substituindo o xarope de milho.";
+
+            switch(platform) {
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'whatsapp':
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+                    break;
+                case 'linkedin':
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+                    break;
+            }
+        }
+
+    
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.comparison-section, .impact-section, .quote-section');
+            
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                
+                const platform = this.classList[1]; 
+                shareNews(platform);
+            });
+        });
+    </script>
+</body>
+</html>
